@@ -20,12 +20,12 @@ public class StudentService implements StudentServiceInterface {
 
     @Override
     public List<Student> getAll() {
-        return null;
+        return repo.findAll();
     }
 
     @Override
     public Student getById(int id) {
-        return null;
+        return repo.getById(id);
     }
 
     @Override
