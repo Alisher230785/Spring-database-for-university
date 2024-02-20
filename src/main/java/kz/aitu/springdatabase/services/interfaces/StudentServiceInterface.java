@@ -8,5 +8,5 @@ public interface StudentServiceInterface {
     List<Student> getAll();
     Student getById(int id);
     Student create(Student student);
-    List<Student> getBySurname(String surname);
+    List<Student> getByLastName(String last_name);
 }
