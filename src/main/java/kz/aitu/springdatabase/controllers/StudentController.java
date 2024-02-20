@@ -38,4 +38,13 @@ public class StudentController {
         return new ResponseEntity<>(student,HttpStatus.CREATED); // 201 created
     }
 
+    @GetMapping("/surname/{student_surname}")
+    public List<Student> getAllBySurname(@PathVariable("student_surname") String surname){
+        return service.getByLastName(surname);
+    }
+
+    @GetMapping("/name/{student_name}")
+    public List<Student> getAllByName(@PathVariable("student_name") String name){
+        return service.getByName(name);
+    }
 }

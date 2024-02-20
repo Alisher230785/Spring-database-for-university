@@ -32,8 +32,11 @@ public class StudentService implements StudentServiceInterface {
         return repo.save(student);
     }
 
-    @Override
-    public List<Student> getByLastName(String last_name) {
-        return null;
+    public List<Student> getByLastName(String surname) {
+        return repo.findBySurname(surname);
+    }
+
+    public List<Student> getByName(String name) {
+        return repo.findByName(name);
     }
 }

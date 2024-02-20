@@ -11,7 +11,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String last_name;
+    private String surname;
     private int age;
     private int course;
     private double gpa;
