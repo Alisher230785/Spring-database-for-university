@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class StudentService implements StudentServiceInterface {
 
     private final StudentRepositoryInterface repo;
@@ -25,12 +24,12 @@ public class StudentService implements StudentServiceInterface {
 
     @Override
     public Student getById(int id) {
-        return repo.getById(id);
+        return repo.findById(id).orElse(null);
     }
 
     @Override
     public Student create(Student student) {
-        return null;
+        return repo.save(student);
     }
 
     @Override

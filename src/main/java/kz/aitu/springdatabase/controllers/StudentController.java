@@ -22,5 +22,20 @@ public class StudentController {
         return service.getAll();
     }
 
+    @GetMapping("/{student_id}")
+    public ResponseEntity<Student> getById(@PathVariable("student_id") int id) {
+        Student student = service.getById(id);
+        if(student == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // 404 not found
+        return new ResponseEntity<>(student,HttpStatus.OK); // 200 OK
+    }
+
+    @PostMapping({"/create","/create/"})
+    public ResponseEntity<Student> CreateStudent(@RequestBody Student student) {
+        Student createdStudent = service.create(student);
+        if(createdStudent == null)
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // 500
+        return new ResponseEntity<>(student,HttpStatus.CREATED); // 201 created
+    }
 
 }
