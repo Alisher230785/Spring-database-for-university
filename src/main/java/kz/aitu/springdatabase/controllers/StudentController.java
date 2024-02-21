@@ -62,4 +62,10 @@ public class StudentController {
     public Student updateEntity(@PathVariable("student_id") int id, @RequestBody Student student ) {
         return service.updateEntity(id,student);
     }
+
+    @DeleteMapping({"/delete/{student_id}","/delete/{student_id}/"})
+    public ResponseEntity<Student> deleteStudent(@PathVariable("student_id") int id ) {
+        service.deleteStudent(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

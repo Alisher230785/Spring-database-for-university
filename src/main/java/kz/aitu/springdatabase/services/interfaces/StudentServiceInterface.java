@@ -13,5 +13,5 @@ public interface StudentServiceInterface {
     List<Student> getAllByGpa();
     List<Student> getAllByCourse(int course);
     Student updateEntity(int id, Student student);
-
+    void deleteStudent(int id);
 }

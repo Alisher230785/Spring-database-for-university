@@ -4,7 +4,9 @@ import jakarta.persistence.EntityNotFoundException;
 import kz.aitu.springdatabase.models.Student;
 import kz.aitu.springdatabase.repositories.StudentRepositoryInterface;
 import kz.aitu.springdatabase.services.interfaces.StudentServiceInterface;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -63,5 +65,12 @@ public class StudentService implements StudentServiceInterface {
         existingStudent.setGpa(student.getGpa());
 
         return repo.save(existingStudent);
+    }
+
+    @Override
+    public void deleteStudent(int id) {
+        repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found with id: " + id));
+
+        repo.deleteById(id);
     }
 }
