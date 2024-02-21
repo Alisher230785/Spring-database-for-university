@@ -38,13 +38,23 @@ public class StudentController {
         return new ResponseEntity<>(student,HttpStatus.CREATED); // 201 created
     }
 
-    @GetMapping("/surname/{student_surname}")
+    @GetMapping({"/surname/{student_surname}","/surname/{student_surname}/"})
     public List<Student> getAllBySurname(@PathVariable("student_surname") String surname){
         return service.getByLastName(surname);
     }
 
-    @GetMapping("/name/{student_name}")
+    @GetMapping({"/name/{student_name}","/name/{student_name}/"})
     public List<Student> getAllByName(@PathVariable("student_name") String name){
         return service.getByName(name);
+    }
+
+    @GetMapping({"/gpa","/gpa/"})
+    public List<Student> getAllByGPA() {
+        return service.getAllByGpa();
+    }
+
+    @GetMapping({"/course/{student_course}","/course/{student_course}/"})
+    public List<Student> getAllByCourse(@PathVariable("student_course") int course) {
+        return service.getAllByCourse(course);
     }
 }

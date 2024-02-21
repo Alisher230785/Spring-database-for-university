@@ -10,4 +10,6 @@ public interface StudentServiceInterface {
     Student create(Student student);
     List<Student> getByLastName(String surname);
     List<Student> getByName(String name);
+    List<Student> getAllByGpa();
+    List<Student> getAllByCourse(int course);
 }

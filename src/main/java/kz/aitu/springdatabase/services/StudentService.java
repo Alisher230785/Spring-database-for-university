@@ -39,4 +39,14 @@ public class StudentService implements StudentServiceInterface {
     public List<Student> getByName(String name) {
         return repo.findByName(name);
     }
+
+    @Override
+    public List<Student> getAllByGpa() {
+        return repo.findAllByOrderByGpaDesc();
+    }
+
+    @Override
+    public List<Student> getAllByCourse(int course) {
+        return repo.findAllByCourse(course);
+    }
 }
