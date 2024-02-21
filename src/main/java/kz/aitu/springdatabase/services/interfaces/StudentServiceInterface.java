@@ -5,13 +5,13 @@ import kz.aitu.springdatabase.models.Student;
 import java.util.List;
 
 public interface StudentServiceInterface {
-    List<Student> getAll();
-    Student getById(int id);
-    Student create(Student student);
-    List<Student> getByLastName(String surname);
-    List<Student> getByName(String name);
-    List<Student> getAllByGpa();
-    List<Student> getAllByCourse(int course);
-    Student updateEntity(int id, Student student);
-    void deleteStudent(int id);
+    List<Student> getAll(); // return all students
+    Student getById(int id); // return student by id
+    Student create(Student student); // create new student
+    List<Student> getByLastName(String surname); // return students by Surname
+    List<Student> getByName(String name); // return students by Name
+    List<Student> getAllByGpa(); // return students by Gpa
+    List<Student> getAllByCourse(int course); // return student by Course
+    Student updateEntity(int id, Student student); // update information about the student by id
+    void deleteStudent(int id); // delete student by id
 }

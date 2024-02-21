@@ -22,7 +22,7 @@ public class StudentController {
         return service.getAll();
     }
 
-    @GetMapping("/{student_id}")
+    @GetMapping({"/{student_id}","/{student_id}/"})
     public ResponseEntity<Student> getById(@PathVariable("student_id") int id) {
         Student student = service.getById(id);
         if(student == null)
@@ -34,7 +34,7 @@ public class StudentController {
     public ResponseEntity<Student> CreateStudent(@RequestBody Student student) {
         Student createdStudent = service.create(student);
         if(createdStudent == null)
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // 500
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // 500 internal server error
         return new ResponseEntity<>(student,HttpStatus.CREATED); // 201 created
     }
 
@@ -64,8 +64,7 @@ public class StudentController {
     }
 
     @DeleteMapping({"/delete/{student_id}","/delete/{student_id}/"})
-    public ResponseEntity<Student> deleteStudent(@PathVariable("student_id") int id ) {
+    public void deleteStudent(@PathVariable("student_id") int id ) {
         service.deleteStudent(id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

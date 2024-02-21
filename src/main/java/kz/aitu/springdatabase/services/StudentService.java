@@ -1,6 +1,5 @@
 package kz.aitu.springdatabase.services;
 
-import jakarta.persistence.EntityNotFoundException;
 import kz.aitu.springdatabase.models.Student;
 import kz.aitu.springdatabase.repositories.StudentRepositoryInterface;
 import kz.aitu.springdatabase.services.interfaces.StudentServiceInterface;
@@ -19,7 +18,6 @@ public class StudentService implements StudentServiceInterface {
         this.repo = repo;
     }
 
-
     @Override
     public List<Student> getAll() {
         return repo.findAll();
@@ -27,7 +25,7 @@ public class StudentService implements StudentServiceInterface {
 
     @Override
     public Student getById(int id) {
-        return repo.findById(id).orElse(null);
+        return repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Override
@@ -56,21 +54,20 @@ public class StudentService implements StudentServiceInterface {
     @Override
     public Student updateEntity(int id, Student student) {
         Student existingStudent = repo.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Student not found with id: " + id));
-
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)); // if there's no student with the id, return 404
+        // mutating the returned student
         existingStudent.setName(student.getName());
         existingStudent.setSurname(student.getSurname());
         existingStudent.setAge(student.getAge());
         existingStudent.setCourse(student.getCourse());
         existingStudent.setGpa(student.getGpa());
 
-        return repo.save(existingStudent);
+        return repo.save(existingStudent); // set it
     }
 
     @Override
     public void deleteStudent(int id) {
-        repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found with id: " + id));
-
-        repo.deleteById(id);
+        repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)); // if there's no student with the id, return 404
+        repo.deleteById(id); // delete the student
     }
 }
