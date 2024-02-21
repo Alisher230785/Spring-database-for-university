@@ -12,4 +12,6 @@ public interface StudentServiceInterface {
     List<Student> getByName(String name);
     List<Student> getAllByGpa();
     List<Student> getAllByCourse(int course);
+    Student updateEntity(int id, Student student);
+
 }

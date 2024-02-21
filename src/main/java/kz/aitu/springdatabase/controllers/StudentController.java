@@ -57,4 +57,9 @@ public class StudentController {
     public List<Student> getAllByCourse(@PathVariable("student_course") int course) {
         return service.getAllByCourse(course);
     }
+
+    @PutMapping({"/update/{student_id}","/update/{student_id}/"})
+    public Student updateEntity(@PathVariable("student_id") int id, @RequestBody Student student ) {
+        return service.updateEntity(id,student);
+    }
 }
