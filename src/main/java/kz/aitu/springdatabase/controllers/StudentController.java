@@ -67,4 +67,14 @@ public class StudentController {
     public void deleteStudent(@PathVariable("student_id") int id ) {
         service.deleteStudent(id);
     }
+
+    @GetMapping({"/stipendholedrs","/stipendholders/"})
+    public List<Student> stipendHolder() {
+        return service.stipendHolder();
+    }
+
+    @GetMapping({"/analyse/{student_id}","/analyse/{student_id}/"})
+    public String analyseStudent(@PathVariable("student_id") int id) {
+        return service.analyseStudent(id);
+    }
 }

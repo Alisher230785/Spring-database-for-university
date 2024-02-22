@@ -70,4 +70,19 @@ public class StudentService implements StudentServiceInterface {
         repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)); // if there's no student with the id, return 404
         repo.deleteById(id); // delete the student
     }
+
+    @Override
+    public List<Student> stipendHolder() {
+        return repo.findAllByGpaAfter(2.67);
+    }
+
+    @Override
+    public String analyseStudent(int id) {
+        Student existingStudent = repo.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)); // if there's no student with the id, return 404
+        String Name = existingStudent.getName();
+        double gpa = existingStudent.getGpa();
+        int position = repo.findPositionByGPA(gpa, id);
+        return String.format("The position of student '%s' with GPA %.2f is: %d", Name, gpa, position);
+    }
 }

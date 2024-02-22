@@ -14,4 +14,6 @@ public interface StudentServiceInterface {
     List<Student> getAllByCourse(int course); // return student by Course
     Student updateEntity(int id, Student student); // update information about the student by id
     void deleteStudent(int id); // delete student by id
+    List<Student> stipendHolder(); // return all students will stipends
+    String analyseStudent(int id); // return student's position by gpa
 }
