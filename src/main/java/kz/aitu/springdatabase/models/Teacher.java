@@ -2,6 +2,9 @@ package kz.aitu.springdatabase.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,7 +20,6 @@ public class Teacher {
     private String subject;
 
     @OneToMany
-    @JoinColumn(name = "student_id")
-    private List<Student> students_id;
-
+    @JoinColumn(name = "teacher_id")
+    private List<Student> students;
 }
