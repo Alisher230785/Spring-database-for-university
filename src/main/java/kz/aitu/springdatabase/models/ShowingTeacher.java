@@ -3,10 +3,12 @@ package kz.aitu.springdatabase.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "teachers")
-public class CreatingTeacher {
+public class ShowingTeacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int teacher_id;
@@ -14,4 +16,8 @@ public class CreatingTeacher {
     private String surname;
     private int age;
     private String subject;
+
+    @OneToMany
+    @JoinColumn(name = "teacher_id")
+    private List<Student> students;
 }
