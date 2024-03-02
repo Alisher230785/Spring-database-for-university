@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "teachers")
-public class ShowingTeacher {
+public class ShowingTeacher { // teacher model for GET method
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int teacher_id;

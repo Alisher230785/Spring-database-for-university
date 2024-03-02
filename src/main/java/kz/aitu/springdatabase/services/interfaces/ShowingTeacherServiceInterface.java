@@ -4,5 +4,5 @@ import kz.aitu.springdatabase.models.ShowingTeacher;
 
 import java.util.List;
 public interface ShowingTeacherServiceInterface {
-    List<ShowingTeacher> getAllTeachers();
+    List<ShowingTeacher> getAllTeachers(); // return all teachers from teachers table
 }

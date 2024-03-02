@@ -13,7 +13,6 @@ public class ShowingTeacherService implements ShowingTeacherServiceInterface {
     public ShowingTeacherService(ShowingTeacherRepositoryInterface repo) {
         this.repo = repo;
     }
-
     @Override
     public List<ShowingTeacher> getAllTeachers() {
         return repo.findAll();
