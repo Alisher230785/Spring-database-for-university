@@ -17,14 +17,12 @@ SpringDatabaseApplication:
 • application.properties
 this file is intended to store data for connecting to the database, as well as other related data.
 
-Create Teacher:
+createTeacher:
 • Description: Creates a new teacher with the provided details.
 • Request Body: JSON object representing the teacher entity.
 
-Update Teacher:
+updateTeacher:
 • Description: Updates the details of an existing teacher specified by teacher_id.
 
-Delete Teacher:
+deleteTeacher:
 • Description: Deletes the teacher with the specified teacher_id.
-
-And when teachers are removed, their students are also removed
